@@ -15,6 +15,11 @@ export default {
         views
       }
     }`
+  },
+  data () {
+    return {
+      allPosts: [{}]
+    }
   }
 }
 </script>
