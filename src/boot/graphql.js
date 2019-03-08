@@ -1,15 +1,15 @@
 import { ApolloClient } from 'apollo-client'
 import VueApollo from 'vue-apollo'
-import { HttpLink } from 'apollo-link-http'
+import { createUploadLink } from 'apollo-upload-client'
 import { InMemoryCache } from 'apollo-cache-inmemory'
 
 export default ({ Vue, app }) => {
-  const uri = process.env.API_END_POINT || 'http://localhost:3000/'
-  const httpLink = new HttpLink({ uri })
+  const uri = process.env.API_END_POINT || '/graphql'
+  const uploadLink = createUploadLink({ uri, credentials: 'include' })
 
   // Create the apollo client
   const defaultClient = new ApolloClient({
-    link: httpLink,
+    link: uploadLink,
     cache: new InMemoryCache()
   })
 
