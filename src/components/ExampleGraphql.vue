@@ -5,16 +5,14 @@
 </template>
 
 <script>
-import gql from 'graphql-tag'
-
 export default {
   apollo: {
-    allPosts: gql`query {
-      allPosts {
-        title
-        views
-      }
-    }`
+    allPosts: require('../graphql/allPosts')
+  },
+  data () {
+    return {
+      allPosts: [{}]
+    }
   }
 }
 </script>

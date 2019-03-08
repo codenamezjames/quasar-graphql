@@ -1,0 +1,6 @@
+query {
+  allPosts {
+    title
+    views
+  }
+}

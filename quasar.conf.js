@@ -62,6 +62,12 @@ module.exports = function (ctx) {
       // analyze: true,
       // extractCSS: false,
       extendWebpack (cfg) {
+        cfg.resolve.extensions = [ '.mjs', ...cfg.resolve.extensions, '.gql', '.graphql' ]
+        cfg.module.rules.push({
+          test: /\.(graphql|gql)$/,
+          exclude: /node_modules/,
+          loader: ['graphql-tag/loader']
+        })
         cfg.module.rules.push({
           enforce: 'pre',
           test: /\.(js|vue)$/,
